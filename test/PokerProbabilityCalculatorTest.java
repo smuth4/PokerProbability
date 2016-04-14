@@ -1,4 +1,4 @@
-package unitTests;
+package test;
 
 import java.util.ArrayList;
 
@@ -21,11 +21,14 @@ public class PokerProbabilityCalculatorTest {
 	  try {
 		  ArrayList<Card> hand1 = dealer.generateHand();
 		  ArrayList<Card> hand2 = dealer.generateHand();
-		  int[] result = PokerProbabilityCalculator.handProbability(hand1, hand2);
+		  ArrayList<ArrayList<Card>> hands = new ArrayList<ArrayList<Card>>();
+		  hands.add(hand1);
+		  hands.add(hand2);
+		  int[] result = PokerProbabilityCalculator.handProbability(hands);
 		  int sum = result[0] + result[1] + result[2];
-		  System.out.println("Hand1: " + hand1.toString() + " " + result[0]/(double)sum);
-		  System.out.println("Hand2 " + hand2.toString() + " " + result[1]/(double)sum);
-		  System.out.println("Split " + result[2]/(double)sum);
+		  System.out.println("Hand1: " + hand1.toString() + " " + result[1]/(double)sum);
+		  System.out.println("Hand2 " + hand2.toString() + " " + result[2]/(double)sum);
+		  System.out.println("Split " + result[0]/(double)sum);
 		  Assert.assertTrue(sum == 205476480);
 	  } catch (CardDeckDealerException | CardDeckException | HandsComparatorException e) {
 		  System.out.println(e.getMessage());

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TestAll">
-  <test name="unitTests">
+  <test name="test">
     <classes>
+      <class name="test.CardDeckDealerTest"/>
+      <class name="test.CardDeckTest"/>
+      <class name="test.HandsComparatorTest"/>
     <!-- 
-      <class name="unitTests.CardDeckDealerTest"/>
-      <class name="unitTests.CardDeckTest"/>
-      <class name="unitTests.HandsComparatorTest"/>
-      <class name="unitTests.CardTest"/>
-     -->
-      <class name="unitTests.PokerProbabilityCalculatorTest"/>
+      <class name="test.CardTest"/>
+      <class name="test.PokerProbabilityCalculatorTest"/>
+      -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
