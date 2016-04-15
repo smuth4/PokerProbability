@@ -45,7 +45,7 @@ public class PokerProbabilityCalculator {
 		int i = 0;
 		int j = 0;
 		Random rand = new Random();
-		while(j++ < 100000) {
+		while(j++ < 99999) {
 			i = rand.nextInt(j);
 			community.clear();
 			community.add(deck1.get(i%(deck1.size()-1)));
@@ -57,7 +57,9 @@ public class PokerProbabilityCalculator {
 			
 			if (winners.size() == 1) {
 				if (winners.get(0).get(0).toString().equals(hand1.get(0).toString())
-					|| winners.get(0).get(0).toString().equals(hand1.get(1).toString())) {
+					|| winners.get(0).get(0).toString().equals(hand1.get(1).toString())
+					|| winners.get(0).get(1).toString().equals(hand1.get(0).toString())
+					|| winners.get(0).get(1).toString().equals(hand1.get(1).toString())) {
 					result[1]++;
 				} else {
 					result[2]++;
@@ -101,7 +103,7 @@ public class PokerProbabilityCalculator {
 		int i = 0;
 		int j = 0;
 		Random rand = new Random();
-		while(j++ < 100000) {
+		while(j++ < 2000) {
 			i = rand.nextInt(j);
 			community.clear();
 			for (Card card : inCommunity) {

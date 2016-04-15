@@ -1,5 +1,7 @@
 package demo;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import calculator.PokerProbabilityCalculator;
@@ -14,6 +16,8 @@ public class Demo {
 	public static void main(String[] args) {
 		CardDeckDealer dealer = new CardDeckDealer();
 		ArrayList<ArrayList<Card>> hands = new ArrayList<ArrayList<Card>>();
+		DecimalFormat df = new DecimalFormat("#.##");
+		//df.setRoundingMode(RoundingMode.UNNECESSARY);
 		try {
 			ArrayList<Card> hand1 = dealer.generateHand();
 			ArrayList<Card> hand2 = dealer.generateHand();
@@ -23,9 +27,9 @@ public class Demo {
 			int[] result = PokerProbabilityCalculator.handProbability(hands);
 			int sum = result[0] + result[1] + result[2];
 			System.out.println("****PRE FLOP****");
-			System.out.println("Hand1: " + hand1.toString() + " Win probability: " + result[1]/(double)sum);
-			System.out.println("Hand2: " + hand2.toString() + " Win probability: " + result[2]/(double)sum);
-			System.out.println("Split Probability: " + result[0]/(double)sum);
+			System.out.println("Hand1: " + hand1.toString() + " Win probability: " + df.format(result[1]/(double)sum));
+			System.out.println("Hand2: " + hand2.toString() + " Win probability: " + df.format(result[2]/(double)sum));
+			System.out.println("Split Probability: " + df.format(result[0]/(double)sum));
 			
 			ArrayList<Card> community = new ArrayList<Card>();
 			
@@ -36,9 +40,9 @@ public class Demo {
 			System.out.println();
 			System.out.println("****FLOP****");
 			System.out.println("Community: " + community.toString());
-			System.out.println("Hand1: " + hand1.toString() + " Win probability: " + result[1]/(double)sum);
-			System.out.println("Hand2: " + hand2.toString() + " Win probability: " + result[2]/(double)sum);
-			System.out.println("Split Probability: " + result[0]/(double)sum);
+			System.out.println("Hand1: " + hand1.toString() + " Win probability: " + df.format(result[1]/(double)sum));
+			System.out.println("Hand2: " + hand2.toString() + " Win probability: " + df.format(result[2]/(double)sum));
+			System.out.println("Split Probability: " + df.format(result[0]/(double)sum));
 			
 			Card turn = dealer.generateTurn();
 			community.add(turn);
@@ -47,9 +51,9 @@ public class Demo {
 			System.out.println();
 			System.out.println("****TURN****");
 			System.out.println("Community: " + community.toString());
-			System.out.println("Hand1: " + hand1.toString() + " Win probability: " + result[1]/(double)sum);
-			System.out.println("Hand2: " + hand2.toString() + " Win probability: " + result[2]/(double)sum);
-			System.out.println("Split Probability: " + result[0]/(double)sum);
+			System.out.println("Hand1: " + hand1.toString() + " Win probability: " + df.format(result[1]/(double)sum));
+			System.out.println("Hand2: " + hand2.toString() + " Win probability: " + df.format(result[2]/(double)sum));
+			System.out.println("Split Probability: " + df.format(result[0]/(double)sum));
 			
 			Card river = dealer.generateRiver();
 			community.add(river);
@@ -58,9 +62,9 @@ public class Demo {
 			System.out.println();
 			System.out.println("****RIVER****");
 			System.out.println("Community: " + community.toString());
-			System.out.println("Hand1: " + hand1.toString() + " Win probability: " + result[1]/(double)sum);
-			System.out.println("Hand2: " + hand2.toString() + " Win probability: " + result[2]/(double)sum);
-			System.out.println("Split Probability: " + result[0]/(double)sum);
+			System.out.println("Hand1: " + hand1.toString() + " Win probability: " + df.format(result[1]/(double)sum));
+			System.out.println("Hand2: " + hand2.toString() + " Win probability: " + df.format(result[2]/(double)sum));
+			System.out.println("Split Probability: " + df.format(result[0]/(double)sum));
 			  
 		} catch (CardDeckDealerException | CardDeckException | HandsComparatorException e) {
 			  System.out.println(e.getMessage());
